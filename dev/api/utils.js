@@ -2,6 +2,7 @@ let Utils = {
     getRandomArbitrary: function(min, max) {
         return Math.random() * (max - min) + min;
     },
+    
     createBlockRotations: function(blockId, data) {
         TileRenderer.setStandardModelWithRotation(blockId, data[0][0], data[0][1]);
         TileRenderer.setRotationFunction(blockId);
@@ -9,11 +10,9 @@ let Utils = {
             TileRenderer.registerModelWithRotation(blockId, data[i][0], data[i][1])
         }
     },
-    getAddable: function(max, total, added) {
-        return Math.min(max - total, added)
-    },
+    
     addToSlot: function(container, slot, validIds, targetItemID, addableCount, targetItemData) {
-        let addable = this.getAddable(Item.getMaxStack(targetItemID), slot.count, addableCount);
+        let addable = Math.min(Item.getMaxStack(targetItemID) - slot.count, addableCount);
         if (validIds.indexOf(slot.id) != -1 && addable > 0) {
             container.setSlot(slot.getName(), targetItemID, slot.count+addable, targetItemData);
             return addable
