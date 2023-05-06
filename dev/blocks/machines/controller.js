@@ -14,49 +14,49 @@ Utils.createBlockRotations(BlockID.reactor_controller, [
 
 let controller_gui = new UI.StandardWindow({
     standard: {
-        header: { text: { text: "Reactor Controll" } },
+        header: { text: { text: Translation.translate("Reactor Controll") } },
         inventory: { standard: true },
         background: { standard: true }
     },
     drawing: [
         // scales
-        { type: "bitmap", x: 450, y: 0, bitmap: "coil", scale: 6 },
-        { type: "bitmap", x: 600, y: 0, bitmap: "fueltemperature", scale: 6 },
-        { type: "bitmap", x: 750, y: 0, bitmap: "casingtemperature", scale: 6 },
-        { type: "bitmap", x: 900, y: 0, bitmap: "energystored", scale: 6 },
+        { type: "bitmap", x: 450, y: 5, bitmap: "reactor.coil", scale: 5.5 },
+        { type: "bitmap", x: 600, y: 5, bitmap: "reactor.fueltemperature", scale: 5.5 },
+        { type: "bitmap", x: 750, y: 5, bitmap: "reactor.casingtemperature", scale: 5.5 },
+        { type: "bitmap", x: 900, y: 5, bitmap: "reactor.energystored", scale: 5.5 },
 
         // default values
         { type: "text", text: "100 %", x: 450, y: 130, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 25 } },
-        { type: "bitmap", x: 450, y: 135, bitmap: "fuel_scale", scale: 6 },
+        { type: "bitmap", x: 450, y: 135, bitmap: "reactor.fuel_scale", scale: 6 },
         { type: "text", text: "0 %", x: 470, y: 550, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 25 } },
         { type: "text", text: "1000 °C", x: 600, y: 130, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 25 } },
-        { type: "bitmap", x: 600, y: 135, bitmap: "heat_scale", scale: 6 },
+        { type: "bitmap", x: 600, y: 135, bitmap: "reactor.heat_scale", scale: 6 },
         { type: "text", text: "0 °C", x: 620, y: 550, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 25 } },
         { type: "text", text: "1000 °C", x: 750, y: 130, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 25 } },
-        { type: "bitmap", x: 750, y: 135, bitmap: "heat_scale", scale: 6 },
+        { type: "bitmap", x: 750, y: 135, bitmap: "reactor.heat_scale", scale: 6 },
         { type: "text", text: "0 °C", x: 770, y: 550, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 25 } },
         { type: "text", text: "10.000.000", x: 900, y: 130, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 15 } },
-        { type: "bitmap", x: 900, y: 135, bitmap: "energy_scale", scale: 6 },
+        { type: "bitmap", x: 900, y: 135, bitmap: "reactor.energy_scale", scale: 6 },
         { type: "text", text: "0 RF", x: 920, y: 550, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 25 } },
 
         // left panel
-        { type: "bitmap", x: 0, y: 50, bitmap: "temperature", scale: 4 },
+        { type: "bitmap", x: 0, y: 50, bitmap: "reactor.temperature", scale: 4 },
         { type: "line", x1: 0, y1: 125, x2: 400, y2: 125, width: 5 },
-        { type: "bitmap", x: 0, y: 150, bitmap: "energyoutput", scale: 4 },
+        { type: "bitmap", x: 0, y: 150, bitmap: "reactor.energyoutput", scale: 4 },
         { type: "line", x1: 0, y1: 225, x2: 400, y2: 225, width: 5 },
-        { type: "bitmap", x: 0, y: 250, bitmap: "fuelusagerate", scale: 4 },
+        { type: "bitmap", x: 0, y: 250, bitmap: "reactor.fuelusagerate", scale: 4 },
         { type: "line", x1: 0, y1: 325, x2: 400, y2: 325, width: 5 },
-        { type: "bitmap", x: 0, y: 350, bitmap: "reactivity", scale: 4 },
+        { type: "bitmap", x: 0, y: 350, bitmap: "reactor.reactivity", scale: 4 },
         { type: "line", x1: 0, y1: 425, x2: 400, y2: 425, width: 5 },
         { type: "text", text: "Status:", x: 0, y: 480, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 45 } }
     ],
     elements: {
         // scales
-        fuel_yellorium: { type: "scale", x: 450, y: 135, direction: 1, value: 0, bitmap: "fuel_yellorium", scale: 6 },
-        fuel_cyanite: { type: "scale", x: 450, y: 135, direction: 1, value: 0, bitmap: "fuel_cyanite", scale: 6 },
-        heatbar_fuel: { type: "scale", x: 600, y: 135, direction: 1, value: 0, bitmap: "heat", scale: 6 },
-        heatbar_casing: { type: "scale", x: 750, y: 135, direction: 1, value: 0, bitmap: "heat", scale: 6 },
-        energy_scale: { type: "scale", x: 900, y: 135, direction: 1, value: 0, bitmap: "energy", scale: 6 },
+        fuel_yellorium: { type: "scale", x: 450, y: 135, direction: 1, value: 0, bitmap: "reactor.fuel_yellorium", scale: 6 },
+        fuel_cyanite: { type: "scale", x: 450, y: 135, direction: 1, value: 0, bitmap: "reactor.fuel_cyanite", scale: 6 },
+        heatbar_fuel: { type: "scale", x: 600, y: 135, direction: 1, value: 0, bitmap: "reactor.heat", scale: 6 },
+        heatbar_casing: { type: "scale", x: 750, y: 135, direction: 1, value: 0, bitmap: "reactor.heat", scale: 6 },
+        energy_scale: { type: "scale", x: 900, y: 135, direction: 1, value: 0, bitmap: "reactor.energy", scale: 6 },
 
         // texts
         temperature: { type: "text", text: "0 °C", x: 100, y: 65, width: 300, height: 100, font: { color: android.graphics.Color.BLACK, size: 40 } },
@@ -112,6 +112,7 @@ ReactorRegister.registerMachine(BlockID.reactor_controller, {
         },
         structure: {
             status: false,
+            reason: ""
         },
         energy: {
             max: 1000000000,
@@ -124,8 +125,11 @@ ReactorRegister.registerMachine(BlockID.reactor_controller, {
     },
 
     getScreenName: function (player, coords) {
-        if (!this.data.structure.status)
+        if (!this.data.structure.status) {
+            let client = Network.getClientForPlayer(player);
+            if (client) client.send("BigReactors.message", { type: "default", text: this.data.structure.reason });
             return false;
+        }
         return "main";
     },
 
@@ -194,7 +198,7 @@ ReactorRegister.registerMachine(BlockID.reactor_controller, {
     },
 
     tick: function () {
-        if (World.getThreadTime() % 5 == 0) {
+        if (World.getThreadTime() % __config__.getInteger("interface_update_rate") == 0) {
             this.data.structure.status = MultiBlock.can("reactor", this);
             this.container.sendEvent("updateGuiInfo", {status: this.data.status, autoeject: this.data.autoeject});
             if (this.data.structure.status) {
@@ -289,11 +293,13 @@ MultiBlock.register("reactor", [
                     rods_bottom_control = true;
                     for (let _y = y - 1; _y > tile.data.structure.min.y; _y--) {
                         if (tile.blockSource.getBlockId(x, _y, z) != BlockID.reactor_fuelrod) {
+                            tile.data.structure.reason = Translation.translate("Structure error!") + ` X: ${x} Y: ${_y} Z: ${z}`;
                             rods_bottom_control = false
                         }
                     }
                     return rods_bottom_control;
                 } else {
+                    tile.data.structure.reason = Translation.translate("Structure error!") + ` X: ${x} Y: ${y} Z: ${z}`;
                     return false
                 }
 
@@ -306,8 +312,15 @@ MultiBlock.register("reactor", [
         return tile.data.structure.controllers == 1
     },
     end(tile, min, max, blocks, result) {
-        if ((tile.data.structure.fuelrods / ((max.y - min.y) - 1)) != tile.data.structure.controlrods)
-            return false
+        if (result) {
+            tile.data.structure.reason = ""
+        } else {
+            if (tile.data.structure.fuelrods / (max.y - min.y - 1) != tile.data.structure.controlrods) {
+                tile.data.structure.reason = Translation.translate("Structure error! The number of fuelrods and controllers does not match!");
+                return false
+            }
+            tile.data.structure.reason = Translation.translate("Structure error! The structure has invalid blocks or incorrect shape!");
+        }
     }
 }, {
     x: 3,

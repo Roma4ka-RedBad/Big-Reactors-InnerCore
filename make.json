@@ -4,7 +4,8 @@
 		"author": "redbad",
 		"version": "1.0",
 		"description": "Mod added big reactors",
-		"clientOnly": false
+		"clientOnly": false,
+		"icon": "mod_icon.png"
 	},
 	"api": "CoreEngine",
 	"resources": [
@@ -54,6 +55,14 @@
 	"additional": [
 		{
 			"source": "assets/root/*",
+			"targetDir": "."
+		},
+		{
+			"source": "config.json",
+			"targetDir": "."
+		},
+		{
+			"source": "config.info.json",
 			"targetDir": "."
 		}
 	]

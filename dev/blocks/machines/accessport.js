@@ -6,19 +6,23 @@ Block.createBlock("reactor_accessport", [{
 }], BLOCK_TYPE_MACHINE);
 ToolAPI.registerBlockMaterial(BlockID.reactor_accessport, "stone");
 Utils.createBlockRotations(BlockID.reactor_accessport, [
-    [0, [["accessport.input", 0], ["accessport.input", 0], ["accessport.input", 0], ["accessport.input", 0], ["accessport.input", 0], ["accessport.input", 0]]],
-    [1, [["accessport.output", 0], ["accessport.output", 0], ["accessport.output", 0], ["accessport.output", 0], ["accessport.output", 0], ["accessport.output", 0]]]
+    [2, [["accessport.input", 0], ["accessport.input", 0], ["accessport.input", 0], ["accessport.input", 0], ["accessport.input", 0], ["accessport.input", 0]]],
+    [6, [["accessport.output", 0], ["accessport.output", 0], ["accessport.output", 0], ["accessport.output", 0], ["accessport.output", 0], ["accessport.output", 0]]]
 ]);
 
 let accessport_gui = new UI.StandardWindow({
     standard: {
-        header: { text: { text: "Reactor Accessport" } },
+        header: { text: { text: Translation.translate("Reactor Accessport") } },
         inventory: { standard: true },
         background: { standard: true }
     },
+    drawing: [
+        { type: "bitmap", x: 115, y: 55, bitmap: "input_slot_port", scale: 2.5 },
+        { type: "bitmap", x: 375, y: 55, bitmap: "output_slot_port", scale: 2.5 },
+    ],
     elements: {
         input_slot: { type: "slot", x: 130, y: 70, size: 50 },
-        output_slot: { type: "slot", x: 330, y: 70, size: 50 },
+        output_slot: { type: "slot", x: 390, y: 70, size: 50 },
 
         fuel_eject: {
             type: "button", x: 200, y: 170, bitmap: "fueleject", scale: 3, clicker: {
@@ -94,12 +98,14 @@ ReactorRegister.registerMachine(BlockID.reactor_accessport, {
     },
 
     getAnimation(data) {
-        return +!this.data.is_inlet;
+        if (!this.data.is_inlet)
+            return data + 4;
+        return data
     },
 
     tick: function () {
         StorageInterface.checkHoppers(this);
-        if (World.getThreadTime() % 10 == 0) {
+        if (World.getThreadTime() % __config__.getInteger("interface_update_rate") == 0) {
             this.updateAnimation();
             this.container.sendEvent("updateGuiInfo", this.data);
         }

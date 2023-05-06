@@ -1,4 +1,5 @@
 header.js
+translation.js
 api/reactor.js
 api/fuel.js
 api/utils.js

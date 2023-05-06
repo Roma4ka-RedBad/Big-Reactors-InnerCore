@@ -1,0 +1,22 @@
+{
+    "properties": {
+        "enabled": {
+            "name": {
+                "en": "Enable mod",
+                "ru": "Включить мод"
+            }
+        },
+        "interface_update_rate": {
+            "name": {
+                "en": "Interface update rate and structures (in ticks)",
+                "ru": "Частота обновления интерфейсов и структур"
+            }
+        },
+        "use_ic_uranium": {
+            "name": {
+                "en": "Use uranium as fuel from IC2",
+                "ru": "Использовать уран в качестве топлива из мода IC2"
+            }
+        }
+    }
+}
