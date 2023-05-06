@@ -23,6 +23,7 @@ let accessport_gui = new UI.StandardWindow({
         fuel_eject: {
             type: "button", x: 200, y: 170, bitmap: "fueleject", scale: 3, clicker: {
                 onClick: function (position, container) {
+                    SoundPool.select("button_tap").play();
                     container.sendEvent("buttonAnswer", { data: "get_fuel", value: true })
                 }
             }
@@ -30,6 +31,7 @@ let accessport_gui = new UI.StandardWindow({
         waste_eject: {
             type: "button", x: 260, y: 170, bitmap: "wasteeject", scale: 3, clicker: {
                 onClick: function (position, container) {
+                    SoundPool.select("button_tap").play();
                     container.sendEvent("buttonAnswer", { data: "get_waste", value: true })
                 }
             }
@@ -37,6 +39,7 @@ let accessport_gui = new UI.StandardWindow({
         button_inlet: {
             type: "button", x: 360, y: 170, bitmap: "inlet_on", scale: 3, clicker: {
                 onClick: function (position, container) {
+                    SoundPool.select("button_tap").play();
                     container.sendEvent("buttonAnswer", { data: "is_inlet", value: true })
                 }
             }
@@ -44,6 +47,7 @@ let accessport_gui = new UI.StandardWindow({
         button_outlet: {
             type: "button", x: 420, y: 170, bitmap: "outlet_off", scale: 3, clicker: {
                 onClick: function (position, container) {
+                    SoundPool.select("button_tap").play();
                     container.sendEvent("buttonAnswer", { data: "is_inlet", value: false })
                 }
             }

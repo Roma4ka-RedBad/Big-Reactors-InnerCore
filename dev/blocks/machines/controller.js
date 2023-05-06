@@ -69,6 +69,7 @@ let controller_gui = new UI.StandardWindow({
         button_eject: {
             type: "button", x: 0, y: 500, bitmap: "wasteeject_off", scale: 5, clicker: {
                 onClick: function (position, container) {
+                    SoundPool.select("button_tap").play();
                     container.sendEvent("buttonAnswer", { data: "autoeject", "value": true })
                 }
             }
@@ -76,6 +77,7 @@ let controller_gui = new UI.StandardWindow({
         button_manual: {
             type: "button", x: 100, y: 500, bitmap: "wastemanual_off", scale: 5, clicker: {
                 onClick: function (position, container) {
+                    SoundPool.select("button_tap").play();
                     container.sendEvent("buttonAnswer", { data: "autoeject", value: false })
                 }
             }
@@ -83,6 +85,7 @@ let controller_gui = new UI.StandardWindow({
         button_on: {
             type: "button", x: 0, y: 600, bitmap: "on_off", scale: 5, clicker: {
                 onClick: function (position, container) {
+                    SoundPool.select("button_tap").play();
                     container.sendEvent("buttonAnswer", { data: "status", value: true })
                 }
             }
@@ -90,6 +93,7 @@ let controller_gui = new UI.StandardWindow({
         button_off: {
             type: "button", x: 100, y: 600, bitmap: "off_off", scale: 5, clicker: {
                 onClick: function (position, container) {
+                    SoundPool.select("button_tap").play();
                     container.sendEvent("buttonAnswer", { data: "status", value: false })
                 }
             }
@@ -168,7 +172,7 @@ ReactorRegister.registerMachine(BlockID.reactor_controller, {
             if (!tile.data.is_inlet || this.data.structure.accessports.length == 1) {
                 let output_slot = tile.container.getSlot("output_slot");
                 if (this.data.autoeject) {
-                    let kekk = Utils.addToSlot(tile.container, output_slot, [0, FUELDATA.main_waste_id], FUELDATA.main_waste_id, this.data.fuel.waste_count, 0);
+                    let kekk = Utils.addToSlot(tile.container, output_slot, [0, FuelManager.main_waste_id], FuelManager.main_waste_id, this.data.fuel.waste_count, 0);
                     this.data.fuel.waste_count -= kekk;
                 }
             }
@@ -176,15 +180,15 @@ ReactorRegister.registerMachine(BlockID.reactor_controller, {
             if (tile.data.get_fuel) {
                 tile.data.get_fuel = false;
                 let output_slot = tile.container.getSlot("output_slot");
-                this.data.fuel.count -= Utils.addToSlot(tile.container, output_slot, [0, FUELDATA.main_fuel_id], FUELDATA.main_fuel_id, this.data.fuel.count, 0);
+                this.data.fuel.count -= Utils.addToSlot(tile.container, output_slot, [0, FuelManager.main_fuel_id], FuelManager.main_fuel_id, this.data.fuel.count, 0);
             }
 
             if (tile.data.get_waste) {
                 tile.data.get_waste = false;
                 let output_slot = tile.container.getSlot("output_slot");
-                this.data.fuel.waste_count -= Utils.addToSlot(tile.container, output_slot, [0, FUELDATA.main_waste_id], FUELDATA.main_waste_id, this.data.fuel.waste_count, 0);
+                this.data.fuel.waste_count -= Utils.addToSlot(tile.container, output_slot, [0, FuelManager.main_waste_id], FuelManager.main_waste_id, this.data.fuel.waste_count, 0);
             }
-
+            
             tile.container.sendChanges();
         }
     },

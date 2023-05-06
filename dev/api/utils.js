@@ -12,7 +12,7 @@ let Utils = {
     },
     
     addToSlot: function(container, slot, validIds, targetItemID, addableCount, targetItemData) {
-        let addable = Math.min(Item.getMaxStack(targetItemID) - slot.count, addableCount);
+        let addable = Math.min(Item.getMaxStack(targetItemID) - slot.count, Math.floor(addableCount));
         if (validIds.indexOf(slot.id) != -1 && addable > 0) {
             container.setSlot(slot.getName(), targetItemID, slot.count+addable, targetItemData);
             return addable

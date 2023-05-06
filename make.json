@@ -14,6 +14,11 @@
 			"type": "resource_directory"
 		},
 		{
+			"path": "assets/sounds",
+			"target": "sounds",
+			"type": "resource_directory"
+		},
+		{
 			"path": "assets/gui",
 			"target": "",
 			"type": "gui"
