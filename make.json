@@ -1,0 +1,55 @@
+{
+	"info": {
+		"name": "Big Reactors",
+		"author": "redbad",
+		"version": "1.0",
+		"description": "Mod added big reactors",
+		"clientOnly": false
+	},
+	"api": "CoreEngine",
+	"resources": [
+		{
+			"path": "assets/res",
+			"target": "",
+			"type": "resource_directory"
+		},
+		{
+			"path": "assets/gui",
+			"target": "",
+			"type": "gui"
+		},
+		{
+			"path": "assets/resource_packs/*",
+			"type": "minecraft_resource_pack"
+		},
+		{
+			"path": "assets/behavior_packs/*",
+			"type": "minecraft_behavior_pack"
+		}
+	],
+	"sources": [
+		{
+			"source": "dev",
+			"target": "main.js",
+			"type": "main",
+			"language": "typescript"
+		},
+		{
+			"source": "launcher.js",
+			"type": "launcher",
+			"language": "javascript"
+		},
+		{
+			"source": "lib/*",
+			"type": "library",
+			"language": "javascript"
+		}
+	],
+	"compile": [],
+	"additional": [
+		{
+			"source": "assets/root/*",
+			"targetDir": "."
+		}
+	]
+}
