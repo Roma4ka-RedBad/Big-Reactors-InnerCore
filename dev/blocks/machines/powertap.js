@@ -27,7 +27,7 @@ ReactorRegister.registerMachine(BlockID.reactor_powertap, {
         return false;
     },
 
-    getCapacity: function(){
+    getEnergyStorage: function(){
         return 1000;
     },
 

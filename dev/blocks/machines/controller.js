@@ -153,9 +153,9 @@ ReactorRegister.registerMachine(BlockID.reactor_controller, {
         for (let index = 0; index < this.data.structure.powertaps.length; index++) {
             let tile = this.data.structure.powertaps[index].tile;
             tile.data.status = this.data.status;
-            if (tile.data.energy < tile.getCapacity()) {
-                tile.data.energy += Math.min(tile.getCapacity(), this.data.energy.buffer);
-                this.data.energy.buffer -= Math.min(tile.getCapacity(), this.data.energy.buffer);
+            if (tile.data.energy < tile.getEnergyStorage()) {
+                tile.data.energy += Math.min(tile.getEnergyStorage(), this.data.energy.buffer);
+                this.data.energy.buffer -= Math.min(tile.getEnergyStorage(), this.data.energy.buffer);
             }
         }
     },
@@ -175,10 +175,8 @@ ReactorRegister.registerMachine(BlockID.reactor_controller, {
 
             if (!tile.data.is_inlet || this.data.structure.accessports.length == 1) {
                 let output_slot = tile.container.getSlot("output_slot");
-                if (this.data.autoeject) {
-                    let kekk = Utils.addToSlot(tile.container, output_slot, [0, FuelManager.main_waste_id], FuelManager.main_waste_id, this.data.fuel.waste_count, 0);
-                    this.data.fuel.waste_count -= kekk;
-                }
+                if (this.data.autoeject)
+                    this.data.fuel.waste_count -= Utils.addToSlot(tile.container, output_slot, [0, FuelManager.main_waste_id], FuelManager.main_waste_id, this.data.fuel.waste_count, 0);
             }
 
             if (tile.data.get_fuel) {
@@ -256,7 +254,15 @@ MultiBlock.register("reactor", [
     BlockID.reactor_controlrod,
     BlockID.reactor_accessport,
     BlockID.reactor_powertap
-], [BlockID.reactor_fuelrod, BlockID.cyanite_block], {
+], [
+    BlockID.reactor_fuelrod, 
+    BlockID.cyanite_block,
+    BlockID.graphite_block,
+    VanillaBlockID.diamond_block,
+    VanillaBlockID.iron_block,
+    VanillaBlockID.gold_block,
+    VanillaTileID.water
+], {
     start(tile, min, max, blocks) {
         tile.data.structure.min = min;
         tile.data.structure.max = max;
